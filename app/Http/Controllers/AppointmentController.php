@@ -34,21 +34,6 @@ class AppointmentController extends Controller
         return response()->json($appointments, 200);
     }
 
-    /*public function showOwnAppointments(int $user_id):JsonResponse {
-        $appointments = Appointment::where('tutor_id', $user_id)->with('tutor')->get();
-
-        return response()->json($appointments, 200);
-    }*/
-
-    public function showTutorAppointmentsConformed(string $status, int $user): JsonResponse { //eig unnötig?
-        $appointments = Appointment::where('tutor_id', $user)
-            ->where('status', $status)
-            ->with('tutor')
-            ->get();
-
-        return response()->json($appointments, 200);
-    }
-
     public function saveAppointment(Request $request): JsonResponse {
         DB::beginTransaction();
         try {

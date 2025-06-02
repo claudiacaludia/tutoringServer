@@ -40,15 +40,10 @@ Route::group(['middleware' => ['api', 'auth.jwt']], function () {
 });
 
 Route::group(['middleware' => ['api', 'auth.jwt']], function () {
-    Route::get('/appointments/tutor/{status}/{user}', [AppointmentController::class, 'showTutorAppointmentsConformed']);
-
-   /* Route::get('/appointments/{user}', [AppointmentController::class, 'showOwnAppointments']);*/
-
     Route::get('/appointments/student/{user}', [AppointmentController::class, 'showStudentAppointments']);
     Route::get('/appointments/tutor/{user}', [AppointmentController::class, 'showTutorAppointments']);
-    Route::post('/appointment', [AppointmentController::class, 'saveAppointment']);//auch für studis weil diese Appointment Anfragen stellen können
-
-    Route::put('/appointment/{id}', [AppointmentController::class, 'updateAppointment']); //student kann appointment requesten
+    Route::post('/appointment', [AppointmentController::class, 'saveAppointment']);
+    Route::put('/appointment/{id}', [AppointmentController::class, 'updateAppointment']);
 
     //nur für Tutor*innen aufrufbar
     Route::group(['middleware' => ['api', 'auth.tutor']], function () {

@@ -17,7 +17,7 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password'); // wir holen uns die credentials aus dem request
 
         if (!$token = auth()->attempt($credentials)) { // wir versuchen, ein token zu erstellen
-            return response()->json(['error' => 'Unauthorized'], 401); // wenn das nicht klappt, geben wir einen Fehler zurück
+            return response()->json(['error' => 'Unauthorized'], 401);
         }
 
         return $this->respondWithToken($token);
@@ -28,7 +28,6 @@ class AuthController extends Controller
         return response()->json(['message'=> 'Successfully logged out']);
     }
 
-    //Damit der Client nicht jede Stunde ausgeloggt wird sondern immer wenn das geändert wird token refreshed wird
     public function refresh(){
         return $this->respondWithToken(auth()->refresh());
     }
@@ -46,7 +45,7 @@ class AuthController extends Controller
 
 
 
-    protected function respondWithToken($token) // wir geben den token zurück
+    protected function respondWithToken($token)
     {
         return response()->json([
             'access_token' => $token,
