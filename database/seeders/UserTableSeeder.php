@@ -18,8 +18,8 @@ class UserTableSeeder extends Seeder
         $user->email = "murr@gmail.com";
         $user->password = bcrypt('secret');
         $user->role = 'tutor';
-        $user->education = 'Master of Science in Hagenberg - Software Engineering';
-        $user->contact_info="Telefonnummer: +43 660 8097876";
+        $user->education = 'Master of Science at the University of Applied Sciences Hagenberg - Software Engineering';
+        $user->contact_info="Number: +43 660 8097876";
         $user->save();
 
         $user2 = new User;
@@ -27,8 +27,8 @@ class UserTableSeeder extends Seeder
         $user2->email = "simon@gmail.com";
         $user2->password = bcrypt('secret');
         $user2->role = 'tutor';
-        $user2->education = 'HTL Leonding, 10 Jahre Erfahrung';
-        $user2->contact_info="Telefonnummer: +43 660 8011890";
+        $user2->education = 'HTL Leonding, 10 years experience';
+        $user2->contact_info="Number: +43 660 8011890";
         $user2->save();
 
         $user3 = new User;
@@ -36,8 +36,8 @@ class UserTableSeeder extends Seeder
         $user3->email = "lustig@gmail.com";
         $user3->password = bcrypt('secret');
         $user3->role = 'student';
-        $user3->education = 'KWM Studentin';
-        $user3->contact_info="Telefonnummer: +43 680 8881890";
+        $user3->education = 'KWM Student';
+        $user3->contact_info="Number: +43 680 8881890";
         $user3->save();
 
         $user4 = new User;

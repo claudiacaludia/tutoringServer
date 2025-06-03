@@ -26,11 +26,11 @@ class AppointmentController extends Controller
     }
 
     public function showTutorAppointments(int $tutor_id):JsonResponse {
-        $appointments = Appointment::where('tutor_id', $tutor_id)->with('tutor')->get();
+        $appointments = Appointment::where('tutor_id', $tutor_id)->with(['tutor', 'student', 'topic'])->get();
         return response()->json($appointments, 200);
     }
     public function showStudentAppointments(int $student_id):JsonResponse {
-        $appointments = Appointment::where('student_id', $student_id)->with('tutor')->get();
+        $appointments = Appointment::where('student_id', $student_id)->with(['tutor', 'student', 'topic'])->get();
         return response()->json($appointments, 200);
     }
 
