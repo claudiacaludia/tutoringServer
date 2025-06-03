@@ -34,19 +34,18 @@ Route::get('/topics', [TopicController::class, 'index']);
 Route::get('/userRole/{id}', [AuthController::class, 'getUserRole']);
 
 
-
 Route::group(['middleware' => ['api', 'auth.jwt']], function () {
     Route::post('auth/logout', [AuthController::class, 'logout']);
 });
 
 Route::group(['middleware' => ['api', 'auth.jwt']], function () {
     Route::get('/appointments/student/{user}', [AppointmentController::class, 'showStudentAppointments']);
-    Route::get('/appointments/tutor/{user}', [AppointmentController::class, 'showTutorAppointments']);
     Route::post('/appointment', [AppointmentController::class, 'saveAppointment']);
-    Route::put('/appointment/{id}', [AppointmentController::class, 'updateAppointment']);
 
     //nur für Tutor*innen aufrufbar
     Route::group(['middleware' => ['api', 'auth.tutor']], function () {
+        Route::get('/appointments/tutor/{user}', [AppointmentController::class, 'showTutorAppointments']);
+        Route::put('/appointment/{id}', [AppointmentController::class, 'updateAppointment']);
         Route::post('/subject', [SubjectController::class, 'saveSubject']);
         Route::post('/topic', [TopicController::class, 'saveTopic']);
 
