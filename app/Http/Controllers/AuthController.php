@@ -32,17 +32,6 @@ class AuthController extends Controller
         return $this->respondWithToken(auth()->refresh());
     }
 
-    public function getUserRole(int $id): JsonResponse {
-        $user = User::find($id);
-
-        if (!$user) {
-            return response()->json(['error' => 'User not found'], 404);
-        }
-
-        return response()->json($user->role);
-    }
-
-
 
 
     protected function respondWithToken($token)

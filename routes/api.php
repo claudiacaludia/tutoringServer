@@ -24,14 +24,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('auth/login', [AuthController::class, 'login']);
 
-
 Route::get('/appointments', [AppointmentController::class, 'index']);
 Route::get('/appointments/open', [AppointmentController::class, 'showOpenAppointments']);
 Route::get('appointments/{id}', [AppointmentController::class, 'findById']);
 Route::get('/subjects', [SubjectController::class, 'index']);
 Route::get('/topics', [TopicController::class, 'index']);
 
-Route::get('/userRole/{id}', [AuthController::class, 'getUserRole']);
 
 
 Route::group(['middleware' => ['api', 'auth.jwt']], function () {
@@ -45,10 +43,10 @@ Route::group(['middleware' => ['api', 'auth.jwt']], function () {
     //nur für Tutor*innen aufrufbar
     Route::group(['middleware' => ['api', 'auth.tutor']], function () {
         Route::get('/appointments/tutor/{user}', [AppointmentController::class, 'showTutorAppointments']);
-        Route::put('/appointment/{id}', [AppointmentController::class, 'updateAppointment']);
         Route::post('/subject', [SubjectController::class, 'saveSubject']);
         Route::post('/topic', [TopicController::class, 'saveTopic']);
 
+        Route::put('/appointment/{id}', [AppointmentController::class, 'updateAppointment']);
         Route::put('/subject/{id}', [SubjectController::class, 'updateSubject']);
         Route::put('/topic/{id}', [TopicController::class, 'updateTopic']);
 
