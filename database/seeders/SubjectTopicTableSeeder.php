@@ -15,27 +15,27 @@ class SubjectTopicTableSeeder extends Seeder
     public function run(): void
     {
         $subject1 = new Subject;
-        $subject1->name = 'Webentwicklung';
-        $subject1->description = 'Grundlagen und moderne Webtechnologien wie HTML, CSS, JavaScript.';
+        $subject1->name = 'Web Development';
+        $subject1->description = 'Basics and modern web technologies such as HTML, CSS, JavaScript.';
         $subject1->save();
 
         $topic1 = new Topic;
         $topic1->name = 'Vue';
-        $topic1->description = 'Grundlagen von dem Framework Vue.js';
+        $topic1->description = 'Vue Basics and best practices.';
 
         $topic2 = new Topic;
         $topic2->name = 'React';
-        $topic2->description = 'Grundlagen von dem Framework React.js';
+        $topic2->description = 'Everything one should know about react.';
 
         $subject1->topics()->saveMany([$topic1, $topic2]);
 
         $subject2 = new Subject;
-        $subject2->name = 'Datenbanken';
-        $subject2->description = 'Relationale Datenbanken, SQL und Datenmodellierung.';
+        $subject2->name = 'Java Development';
+        $subject2->description = 'Learn coding java';
         $subject2->save();
         $topic3 = new Topic;
-        $topic3->name = 'SQL Basics';
-        $topic3->description = "Tabellen erstellen und löschen";
+        $topic3->name = 'Java Basics';
+        $topic3->description = "All of the basics.";
         $subject2->topics()->save($topic3);
 
     }

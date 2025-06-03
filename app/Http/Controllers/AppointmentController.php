@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Gate;
 class AppointmentController extends Controller
 {
     public function index():JsonResponse {
-        $appointments = Appointment::with(['tutor', 'student', 'topic'])->get();
+        $appointments = Appointment::with(['tutor', 'student', 'topic', 'topic.subject'])->get();
         return response()->json($appointments, 200);
     }
     public function showOpenAppointments(): JsonResponse {
