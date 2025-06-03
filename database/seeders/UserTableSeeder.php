@@ -42,7 +42,7 @@ class UserTableSeeder extends Seeder
 
         $user4 = new User;
         $user4->name = "Mario Müde";
-        $user4->email = "muede@gmail.com";
+        $user4->email = "martin@gmail.com";
         $user4->password = bcrypt('secret');
         $user4->role = 'student';
         $user4->education = 'Student';
