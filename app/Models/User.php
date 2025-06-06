@@ -54,10 +54,6 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->getKey();
     }
-    public function isTutor(): bool
-    {
-        return $this->role === 'tutor';
-    }
 
 
     public function getJWTCustomClaims()

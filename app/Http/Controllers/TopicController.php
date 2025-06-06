@@ -39,7 +39,7 @@ class TopicController extends Controller
             if ($topic != null) {
                 $request = $this->parseRequest($request);
                 $topic->update($request->all());
-                $updatedTopic = Topic::with('subject')->where('id', $id)->first();
+                $updatedTopic = Topic::with('subject')->where('id', $id)->first(); //query builder
                 DB::commit();
                 return response()->json($updatedTopic, 200);
             } else {

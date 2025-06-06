@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Appointment extends Model
 {
+    //mass assignable: welche Attribute über HTTP Request/Arrays Parameter gesetzt werden dürfen
     protected $fillable = ['description','price','status','proposed_time','tutor_id','student_id','topic_id'];
 
     public function tutor():BelongsTo {
