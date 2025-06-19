@@ -39,15 +39,6 @@ class AppointmentController extends Controller
         try {
             $request = $this->parseRequest($request);
             $user = auth()->user();
-
-            $tutor = User::find($request['tutor_id']);
-            $student = User::find($request['student_id']);
-            if ($tutor->role !== 'tutor') {
-                return response()->json(['error' => 'User does not have role tutor'], 403);
-            }
-            if ($student !== null && $student->role !== 'student') {
-                return response()->json(['error' => 'User does not have role student'], 403);
-            }
             if($user->role === 'tutor') {
                 $request['tutor_id'] = $user->id;
             } else {
